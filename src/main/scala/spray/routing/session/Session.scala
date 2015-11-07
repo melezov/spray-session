@@ -18,6 +18,6 @@ package spray
 package routing
 package session
 
-import http.DateTime
+import spray.http.DateTime
 
 private case class Session[T](map: Map[String, T], expires: Option[DateTime])

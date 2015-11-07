@@ -2,30 +2,17 @@ package spray
 package routing
 package session
 
-import org.specs2.mutable.{
-  Specification,
-  After
-}
-import org.specs2.specification.Scope
-
-import testkit.Specs2RouteTest
-
-import directives._
-
-import http._
-import HttpHeaders._
-import StatusCodes._
-
-import scala.concurrent.duration.{
-  Duration,
-  SECONDS
-}
-import scala.concurrent.Future
-
-import akka.util.Timeout
 import akka.actor.ActorSystem
+import akka.util.Timeout
+import org.specs2.mutable.{After, Specification}
+import org.specs2.specification.Scope
+import spray.http.HttpHeaders._
+import spray.http.StatusCodes._
+import spray.http._
+import spray.routing.session.directives._
+import spray.testkit.Specs2RouteTest
 
-import com.typesafe.config.ConfigFactory
+import scala.concurrent.duration._
 
 abstract class StatelessSessionSpec extends Specification with Specs2RouteTest {
   self =>
@@ -48,7 +35,7 @@ abstract class StatelessSessionSpec extends Specification with Specs2RouteTest {
     // create a new manager for each scope
     implicit val manager = self.manager
 
-    def after = actorRefFactory.shutdown()
+    def after = actorRefFactory.terminate()
 
     val sessionRoute =
       handleRejections(invalidSessionHandler) {

@@ -19,22 +19,11 @@ package routing
 package session
 package directives
 
-import scala.concurrent.{
-  Future,
-  ExecutionContext
-}
-
-import spray.routing.directives.{
-  BasicDirectives,
-  CookieDirectives,
-  RouteDirectives,
-  FutureDirectives
-}
-
-import spray.http.HttpHeaders
-
 import shapeless._
+import spray.http.HttpHeaders
+import spray.routing.directives.{BasicDirectives, CookieDirectives, FutureDirectives, RouteDirectives}
 
+import scala.concurrent.{ExecutionContext, Future}
 import scala.language.implicitConversions
 
 /** Provides directives that give access to stateful session management.

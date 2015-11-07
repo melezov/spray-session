@@ -4,6 +4,7 @@ language: scala
 branches:
   only:
     - master
+    - 2.11.x
 
 # start the redis server
 services: redis-server

@@ -20,25 +20,14 @@ package session
 
 import akka.actor.ActorRefFactory
 import akka.util.Timeout
-
 import com.redis.RedisClient
 import com.redis.serialization.SprayJsonSupport._
-import com.redis.serialization.DefaultFormats._
-
-import spray.json.JsonFormat
-import spray.json.DefaultJsonProtocol._
-
 import com.typesafe.config.Config
-
-import java.util.concurrent.TimeUnit
+import spray.http.HttpCookie
+import spray.json.DefaultJsonProtocol._
+import spray.json.JsonFormat
 
 import scala.concurrent.Future
-import scala.concurrent.duration._
-
-import http.{
-  DateTime,
-  HttpCookie
-}
 
 /** Session manager that stores session data in a redis database.
  *  The redis database host, respectively port, are configured by the configuration keys

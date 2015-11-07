@@ -18,14 +18,12 @@ package spray
 package routing
 package session
 
+import com.typesafe.config.Config
+import spray.http.HttpCookie
+import spray.util.pimps.PimpedConfig
+
 import scala.concurrent.Future
 import scala.concurrent.duration.Duration
-
-import http.HttpCookie
-
-import util.pimps.PimpedConfig
-
-import com.typesafe.config.Config
 
 /** Common interface for stateless session managers, making it transparent on how
  *  they are stored and persisted.

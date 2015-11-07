@@ -1,4 +1,4 @@
-Spray Session [![Build Status](https://travis-ci.org/gnieh/spray-session.png?branch=master)](https://travis-ci.org/gnieh/spray-session)
+Spray Session [![Build Status](https://travis-ci.org/melezov/spray-session.png?branch=2.11.x)](https://travis-ci.org/melezov/spray-session)
 =============
 
 Provide session management for [Spray](http://spray.io/) applications.

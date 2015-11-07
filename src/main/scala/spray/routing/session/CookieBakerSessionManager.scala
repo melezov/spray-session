@@ -19,22 +19,12 @@ package spray
 package routing
 package session
 
-import scala.concurrent.{
-  Future,
-  ExecutionContext
-}
-import scala.concurrent.duration.Duration
-
-import http.HttpCookie
-
-import util._
+import java.net.{URLDecoder, URLEncoder}
 
 import com.typesafe.config.Config
+import spray.http.HttpCookie
 
-import java.net.{
-  URLEncoder,
-  URLDecoder
-}
+import scala.concurrent.{ExecutionContext, Future}
 
 /** Cookie baker code ported from Play2.0.
  *  Cookies can be signed by setting `spray.routing.session.baker.signed` to `true`.
@@ -68,13 +58,9 @@ class CookieBakerSessionManager(config: Config)(implicit ec: ExecutionContext) e
   val isSigned: Boolean =
     config.getBoolean("spray.routing.session.baker.signed")
 
-  val maxAge: Option[Long] = {
-    val duration = config.getDuration("spray.routing.session.timeout")
-    if(duration.isFinite)
-      Some(duration.toSeconds)
-    else
-      None
-  }
+  val maxAge: Option[Long] =
+    Option(config.getDuration("spray.routing.session.timeout"))
+      .map(_.getSeconds)
 
   /** Encodes the data as a `String`. */
   def encode(data: Map[String, String]): String = {

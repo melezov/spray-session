@@ -18,27 +18,14 @@ package spray
 package routing
 package session
 
-import scala.concurrent.Future
-import scala.concurrent.duration._
-
-import akka.actor.{
-  ActorSystem,
-  Actor,
-  Props,
-  Cancellable,
-  PoisonPill
-}
+import akka.actor.{Actor, ActorSystem, Cancellable, PoisonPill, Props}
 import akka.pattern.ask
 import akka.util.Timeout
-
-import java.util.concurrent.TimeUnit
-
-import http.{
-  DateTime,
-  HttpCookie
-}
-
 import com.typesafe.config.Config
+import spray.http.{DateTime, HttpCookie}
+
+import scala.concurrent.Future
+import scala.concurrent.duration._
 
 /** Session manager that stores the session in memory
  *  If a finite session timeout is given, it defines the maximum amount of time a session
