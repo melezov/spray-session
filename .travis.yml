@@ -1,10 +1,21 @@
 language: scala
 
-# only trigger builds on master
+scala:
+  - "2.11.7"
+
 branches:
   only:
     - master
     - 2.11.x
 
-# start the redis server
+jdk:
+  - oraclejdk8
+
+sudo: false
+
+notifications:
+  email:
+    recipients:
+      - marko@mentat-labs.com
+
 services: redis-server
